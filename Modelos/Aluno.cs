@@ -1,51 +1,47 @@
-namespace Modelos { 
+namespace Modelos {
 
-  class Aluno {
+  class Aluno : Pessoa {
+
     private int periodo;
 
-    public int Periodo  { 
-    get => this.periodo;
-    set { 
-      if (value > 0) {
+    public int Periodo {
+      get => this.periodo;
+      set {
+        if(value > 0) {
           this.periodo = value;
         } else {
           this.periodo = 1;
-          }
         }
+      }
     }
 
-    public string Nome {
+    public string Matricula {
       get; set;
     }
-     public string Matricula {
-      get; set;
+
+    public Aluno() : this(1) {
     }
 
-    
-    public Aluno () : this (1) { 
-    }
-
-    public Aluno (int periodo) {
+    public Aluno(int periodo) {
       this.Periodo = periodo;
-        }
-      
-      
-     public Aluno (string Matricula, string Nome)
-             : this (){
-               this.Matricula = Matricula;
-               this.Nome = Nome;
-             }
- public Aluno (string Matricula, string Nome, int periodo)
-             : this (periodo){
-               this.Matricula = Matricula;
-               this.Nome = Nome;
-             }
+    }
+
+    public Aluno(string nome, string matricula)
+      : this(1) {
+      this.Nome = nome;
+      this.Matricula = matricula;
+    }
+
+    public Aluno(string nome, string matricula, int periodo)
+      : this(periodo) {
+      this.Nome = nome;
+      this.Matricula = matricula;
+    }
     
     public bool Matricular(Disciplina disciplina) {
-
       return this.Periodo == disciplina.Semestre;
     }
     
   }
+  
 }
-   
